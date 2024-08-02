@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const API_URL = 'https://localhost:7198/tasks';
+const API_URL = 'http://localhost:5225/tasks';
 const addTaskMessage = "Task added successfully!";
 const deleteTaskMessage = "Task deleted successfully!";
 const customErrorMessage = "Something went wrong!";
