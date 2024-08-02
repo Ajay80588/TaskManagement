@@ -17,7 +17,9 @@ Before you begin, ensure you have the following installed on your machine:
 3. ORM: Entity Framework
 4. Frontend: React, HTML5, CSS(Tailwind)
 
-# Task Management Backend (TaskManagementApiV1 - Choose either of below setup for backend project)
+# Task Management Backend (TaskManagementApiV1)
+
+## Choose either of below setup for backend project
 
 ## Setup if using Microsoft Visual Studio
 1. Clone the repository.
