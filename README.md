@@ -1,6 +1,8 @@
 # Task Management Application
 This is a basic task management application where users can add, view, and delete tasks.The application consists of a backend API to manage tasks and a frontend application to interact with the API.
 
+-> Please use visual studio and visual studio code in admin mode.
+
 ## Prerequisites
 
 Before you begin, ensure you have the following installed on your machine:
@@ -22,8 +24,12 @@ Before you begin, ensure you have the following installed on your machine:
 2. Navigate to the project directory.
 3. Open appsettings.json and update the connection string to match your SQL Server configuration.
 4. Restore dependencies: `dotnet restore`
-5. Update database: `dotnet ef database update`
-6. Run the project: `dotnet run`
+5. If you are using visual studio code or dotnet CLI for this backend project then install -> `dotnet tool install --global dotnet-ef`
+6. Update database: `dotnet ef database update` (if using cli or visual studio code)
+7. Update database: `database update` (if using visual studio)
+8. Run the project: `dotnet run` (if using cli or visual studio code)
+9. Run the project: Normal run using Visual studio which we usually do.
+10. Note: Please run backend project in http only. We are using http url in frontend project.
 
 ## Endpoints
 - `GET /tasks`
