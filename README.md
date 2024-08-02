@@ -17,19 +17,28 @@ Before you begin, ensure you have the following installed on your machine:
 3. ORM: Entity Framework
 4. Frontend: React, HTML5, CSS(Tailwind)
 
-# Task Management Backend (TaskManagementApiV1)
+# Task Management Backend (TaskManagementApiV1 - Choose either of below setup for backend project)
 
-## Setup
+## Setup if using Microsoft Visual Studio
+1. Clone the repository.
+2. Open project in visual studio.
+3. Open appsettings.json and update the connection string to match your SQL Server configuration.
+4. Please run below command in "Package Manager Console" in Visual Studio
+5. Restore dependencies: `dotnet restore`
+6. Update database: `database update`
+7. Run the project: Normal run using Visual studio which we usually do.
+8. Note: Please run backend project in http only. We are using http url in frontend project.
+
+## Setup if using Visual Studio Code (Cli tool)
 1. Clone the repository.
 2. Navigate to the project directory.
 3. Open appsettings.json and update the connection string to match your SQL Server configuration.
-4. Restore dependencies: `dotnet restore`
-5. If you are using visual studio code or dotnet CLI for this backend project then install -> `dotnet tool install --global dotnet-ef`
-6. Update database: `dotnet ef database update` (if using cli or visual studio code)
-7. Update database: `database update` (if using visual studio)
-8. Run the project: `dotnet run` (if using cli or visual studio code)
-9. Run the project: Normal run using Visual studio which we usually do.
-10. Note: Please run backend project in http only. We are using http url in frontend project.
+4. Please run below command in "Terminal" window in Visual Studio Code
+5. Restore dependencies: `dotnet restore`
+6. Install dotnet-ef: `dotnet tool install --global dotnet-ef`
+7. Update database: `dotnet ef database update`
+8. Run the project: `dotnet run`
+9. Note: Please run backend project in http only. We are using http url in frontend project.
 
 ## Endpoints
 - `GET /tasks`
