@@ -19,43 +19,62 @@ namespace TaskManagementAPIV1.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Task>>> Get()
         {
-            var tasks = await _context.Tasks.ToListAsync();
-            return Ok(tasks);
+            try
+            {
+                var tasks = await _context.Tasks.ToListAsync();
+                return Ok(tasks);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
         }
 
         [HttpPost]
         public async Task<ActionResult<Task>> Post(TaskPayload taskPayload)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                var task = new Task
+                {
+                    Description = taskPayload.Description
+                };
+
+                _context.Tasks.Add(task);
+                await _context.SaveChangesAsync();
+                return CreatedAtAction(nameof(Post), new { id = task.Id }, task);
             }
-
-            var task = new Task
+            catch (Exception ex)
             {
-                Description = taskPayload.Description
-            };
-
-            _context.Tasks.Add(task);
-            await _context.SaveChangesAsync();
-            return CreatedAtAction(nameof(Post), new { id = task.Id }, task);
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var task = await _context.Tasks.FindAsync(id);
-            if (task == null)
+            try
             {
-                return NotFound();
-            }
+                var task = await _context.Tasks.FindAsync(id);
+                if (task == null)
+                {
+                    return NotFound();
+                }
 
-            _context.Tasks.Remove(task);
-            await _context.SaveChangesAsync();
-            return NoContent();
+                _context.Tasks.Remove(task);
+                await _context.SaveChangesAsync();
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
-
-
-
