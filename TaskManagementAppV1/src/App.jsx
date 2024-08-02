@@ -33,7 +33,8 @@ function App() {
   const addTask = async (e) => {
     try {
       e.preventDefault();
-      if (!newTask) return;
+      if (!newTask || (newTask && newTask.trim().length ==0)) return;
+      
       const response = await axios.post(API_URL, { description: newTask });
       setTasks([...tasks, response.data]);
       setNewTask('');
@@ -80,6 +81,8 @@ function App() {
             onChange={(e) => setNewTask(e.target.value)}
             className="border p-2 flex-grow rounded"
             placeholder="New Task Description"
+            pattern=".*\S.*"
+            title="Input cannot be blank or contain only spaces"
             required
           />
           <button type="submit" className="bg-blue-500 text-white p-2 rounded">Add Task</button>
